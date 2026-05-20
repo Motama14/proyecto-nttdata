@@ -108,3 +108,6 @@ mvn no se reconoce como un comando interno o externo
 ```
 
 significa que Maven no está instalado o no está añadido al PATH del sistema. En ese caso hay que instalar Maven o ejecutar el proyecto desde IntelliJ usando la pestaña Maven.
+
+
+# INTEGRANTES DEL GRUPO
