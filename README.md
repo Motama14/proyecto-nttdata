@@ -111,7 +111,7 @@ significa que Maven no está instalado o no está añadido al PATH del sistema. 
 
 
 # INTEGRANTES DEL GRUPO
---Juan Gómez
+--Juan Gómez Ruiz
 --Ian Castellano Martínez
 --Juan Carlos Del Pozo Pineda
 --Sergio Alcaide Ortiz
