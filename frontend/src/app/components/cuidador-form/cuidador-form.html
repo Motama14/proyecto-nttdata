@@ -1,1 +1,79 @@
-<p>cuidador-form works!</p>
+<section class="card">
+      <h2>Crear cuidador</h2>
+      <p>Formulario reactivo para insertar un nuevo cuidador en la base de datos.</p>
+
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+        <div class="form-grid">
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" formControlName="nombre">
+            @if (form.controls.nombre.invalid && form.controls.nombre.touched) {
+              <span class="error">El nombre es obligatorio.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="apellidos">Apellidos</label>
+            <input id="apellidos" type="text" formControlName="apellidos">
+            @if (form.controls.apellidos.invalid && form.controls.apellidos.touched) {
+              <span class="error">Los apellidos son obligatorios.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email">
+            @if (form.controls.email.invalid && form.controls.email.touched) {
+              <span class="error">Introduce un email válido.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" type="text" formControlName="telefono">
+          </div>
+
+          <div class="field">
+            <label for="especialidad">Especialidad</label>
+            <input id="especialidad" type="text" formControlName="especialidad" placeholder="Mamíferos, aves, reptiles...">
+            @if (form.controls.especialidad.invalid && form.controls.especialidad.touched) {
+              <span class="error">La especialidad es obligatoria.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="turno">Turno</label>
+            <select id="turno" formControlName="turno">
+              <option value="">Selecciona un turno</option>
+              <option value="Mañana">Mañana</option>
+              <option value="Tarde">Tarde</option>
+              <option value="Noche">Noche</option>
+            </select>
+            @if (form.controls.turno.invalid && form.controls.turno.touched) {
+              <span class="error">El turno es obligatorio.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="fechaAlta">Fecha de alta</label>
+            <input id="fechaAlta" type="date" formControlName="fechaAlta">
+            @if (form.controls.fechaAlta.invalid && form.controls.fechaAlta.touched) {
+              <span class="error">La fecha de alta es obligatoria.</span>
+            }
+          </div>
+        </div>
+
+        @if (mensajeError()) {
+          <p class="error">{{ mensajeError() }}</p>
+        }
+
+        @if (mensajeExito()) {
+          <p class="success">{{ mensajeExito() }}</p>
+        }
+
+        <div style="margin-top: 20px; display: flex; gap: 12px;">
+          <button class="btn" type="submit" [disabled]="form.invalid || guardando()">Guardar</button>
+          <a class="btn secondary" routerLink="/cuidadores">Volver</a>
+        </div>
+      </form>
+    </section>

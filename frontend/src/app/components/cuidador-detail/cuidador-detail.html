@@ -1,1 +1,50 @@
-<p>cuidador-detail works!</p>
+@if (store.cargando()) {
+      <p>Cargando detalle...</p>
+    }
+
+    @if (store.mensajeError()) {
+      <p class="error">{{ store.mensajeError() }}</p>
+    }
+
+    @if (store.cuidadorSeleccionado(); as cuidador) {
+      <section class="card">
+        <h2>{{ cuidador.nombre }} {{ cuidador.apellidos }}</h2>
+        <p><strong>Email:</strong> {{ cuidador.email }}</p>
+        <p><strong>Teléfono:</strong> {{ cuidador.telefono }}</p>
+        <p><strong>Especialidad:</strong> {{ cuidador.especialidad }}</p>
+        <p><strong>Turno:</strong> {{ cuidador.turno }}</p>
+        <p><strong>Fecha de alta:</strong> {{ cuidador.fechaAlta }}</p>
+        <p><strong>Total de animales:</strong> {{ store.totalAnimalesDelCuidador() }}</p>
+        <a class="btn" routerLink="/animales/nuevo">Asignar nuevo animal</a>
+      </section>
+
+      <section class="card">
+        <h3>Animales asignados</h3>
+        @if (store.animalesDelCuidador().length === 0) {
+          <p>Este cuidador todavía no tiene animales asignados.</p>
+        } @else {
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Especie</th>
+                <th>Hábitat</th>
+                <th>Edad</th>
+                <th>Estado de salud</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (animal of store.animalesDelCuidador(); track animal.id) {
+                <tr>
+                  <td>{{ animal.nombre }}</td>
+                  <td>{{ animal.especie }}</td>
+                  <td>{{ animal.habitat }}</td>
+                  <td>{{ animal.edad }}</td>
+                  <td>{{ animal.estadoSalud }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      </section>
+    }
