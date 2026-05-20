@@ -1,1 +1,79 @@
-<p>animal-form works!</p>
+<section class="card">
+      <h2>Crear animal</h2>
+      <p>Formulario reactivo para insertar un animal y asignarlo a un cuidador.</p>
+
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+        <div class="form-grid">
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" formControlName="nombre">
+            @if (form.controls.nombre.invalid && form.controls.nombre.touched) {
+              <span class="error">El nombre es obligatorio.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="especie">Especie</label>
+            <input id="especie" type="text" formControlName="especie" placeholder="León, tigre, elefante...">
+            @if (form.controls.especie.invalid && form.controls.especie.touched) {
+              <span class="error">La especie es obligatoria.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="habitat">Hábitat</label>
+            <input id="habitat" type="text" formControlName="habitat">
+          </div>
+
+          <div class="field">
+            <label for="edad">Edad</label>
+            <input id="edad" type="number" formControlName="edad">
+            @if (form.controls.edad.invalid && form.controls.edad.touched) {
+              <span class="error">La edad debe ser 0 o superior.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="estadoSalud">Estado de salud</label>
+            <input id="estadoSalud" type="text" formControlName="estadoSalud" placeholder="Sano, en revisión...">
+            @if (form.controls.estadoSalud.invalid && form.controls.estadoSalud.touched) {
+              <span class="error">El estado de salud es obligatorio.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="fechaIngreso">Fecha de ingreso</label>
+            <input id="fechaIngreso" type="date" formControlName="fechaIngreso">
+            @if (form.controls.fechaIngreso.invalid && form.controls.fechaIngreso.touched) {
+              <span class="error">La fecha de ingreso es obligatoria.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="cuidadorId">Cuidador responsable</label>
+            <select id="cuidadorId" formControlName="cuidadorId">
+              <option [ngValue]="0">Selecciona un cuidador</option>
+              @for (cuidador of cuidadores(); track cuidador.id) {
+                <option [ngValue]="cuidador.id">{{ cuidador.nombre }} {{ cuidador.apellidos }}</option>
+              }
+            </select>
+            @if (form.controls.cuidadorId.invalid && form.controls.cuidadorId.touched) {
+              <span class="error">Selecciona un cuidador.</span>
+            }
+          </div>
+        </div>
+
+        @if (mensajeError()) {
+          <p class="error">{{ mensajeError() }}</p>
+        }
+
+        @if (mensajeExito()) {
+          <p class="success">{{ mensajeExito() }}</p>
+        }
+
+        <div style="margin-top: 20px; display: flex; gap: 12px;">
+          <button class="btn" type="submit" [disabled]="form.invalid || guardando()">Guardar</button>
+          <a class="btn secondary" routerLink="/cuidadores">Volver</a>
+        </div>
+      </form>
+    </section>

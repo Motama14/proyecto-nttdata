@@ -1,1 +1,27 @@
-<p>cuidador-list works!</p>
+<section class="card">
+      <h2>Listado de cuidadores</h2>
+      <p>Aquí consultamos los datos principales de cada cuidador.</p>
+      <a class="btn" routerLink="/cuidadores/nuevo">Crear cuidador</a>
+    </section>
+
+    @if (store.cargando()) {
+      <p>Cargando datos...</p>
+    }
+
+    @if (store.mensajeError()) {
+      <p class="error">{{ store.mensajeError() }}</p>
+    }
+
+    <section class="grid">
+      @for (cuidador of store.cuidadores(); track cuidador.id) {
+        <article class="card">
+          <h3>{{ cuidador.nombre }} {{ cuidador.apellidos }}</h3>
+          <p><strong>Email:</strong> {{ cuidador.email }}</p>
+          <p><strong>Teléfono:</strong> {{ cuidador.telefono }}</p>
+          <p><strong>Especialidad:</strong> {{ cuidador.especialidad }}</p>
+          <p><strong>Turno:</strong> {{ cuidador.turno }}</p>
+          <p><strong>Animales asignados:</strong> {{ cuidador.numeroAnimales }}</p>
+          <a class="btn secondary" [routerLink]="['/cuidadores', cuidador.id]">Ver detalle</a>
+        </article>
+      }
+    </section>

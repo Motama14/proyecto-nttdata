@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { ZooStoreService } from '../../services/zoo-store.service';
 
 @Component({
   selector: 'app-cuidador-list',
-  imports: [],
-  templateUrl: './cuidador-list.html',
-  styleUrl: './cuidador-list.css',
+  standalone: true,
+  imports: [RouterLink],
+  templateUrl: './cuidador-list.html'
 })
-export class CuidadorList {
+export class CuidadorListComponent implements OnInit {
+  constructor(public readonly store: ZooStoreService) {}
 
+  ngOnInit(): void {
+    this.store.cargarCuidadores();
+  }
 }
