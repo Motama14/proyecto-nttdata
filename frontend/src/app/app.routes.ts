@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { CuidadorListComponent } from './components/cuidador-list/cuidador-list.component';
-import { CuidadorDetailComponent } from './components/cuidador-detail/cuidador-detail.component';
-import { CuidadorFormComponent } from './components/cuidador-form/cuidador-form.component';
-import { AnimalFormComponent } from './components/animal-form/animal-form.component';
+import { HomeComponent } from './components/home/home';
+import { CuidadorListComponent } from './components/cuidador-list/cuidador-list';
+import { CuidadorDetailComponent } from './components/cuidador-detail/cuidador-detail';
+import { CuidadorFormComponent } from './components/cuidador-form/cuidador-form';
+import { AnimalFormComponent } from './components/animal-form/animal-form';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
