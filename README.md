@@ -110,6 +110,16 @@ mvn no se reconoce como un comando interno o externo
 significa que Maven no está instalado o no está añadido al PATH del sistema. En ese caso hay que instalar Maven o ejecutar el proyecto desde IntelliJ usando la pestaña Maven.
 
 
+# FRONTEND
+Aqui va todo lo relacionado con el FrontEnd
+
+## Comandos del frontend
+
+cd frontend/zoologico-front
+npm install
+npm start
+Abrir en el navegador: http://localhost:4200
+
 # INTEGRANTES DEL GRUPO
 --Juan Gómez Ruiz
 --Ian Castellano Martínez
