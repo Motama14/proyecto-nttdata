@@ -5,6 +5,150 @@ Grupo: "AI SpeedRunners"
 Este es el proyecto final de las prácticas de NTT DATA
 
 
+# Memoria del proyecto: Gestión de zoológico
+
+## 1. Descripción general
+
+El proyecto consiste en una aplicación web para gestionar los cuidadores y animales de un zoológico. La idea principal es representar una relación 1:M, donde un cuidador puede tener muchos animales asignados, pero cada animal tiene un único cuidador responsable.
+
+Con esta estructura podemos consultar los datos de los cuidadores, ver el detalle de uno concreto, crear nuevos cuidadores, crear animales y comprobar qué animales tiene asignados cada cuidador.
+
+## 2. Modelo de datos
+
+El modelo de datos está formado por dos entidades principales:
+
+### Cuidador
+
+Representa a los trabajadores responsables del cuidado de los animales del zoológico.
+
+Campos principales:
+
+- id
+- nombre
+- apellidos
+- email
+- teléfono
+- especialidad
+- turno
+- fecha de alta
+
+### Animal
+
+Representa a los animales que viven en el zoológico.
+
+Campos principales:
+
+- id
+- nombre
+- especie
+- hábitat
+- edad
+- estado de salud
+- fecha de ingreso
+- cuidador responsable
+
+## 3. Relación entre entidades
+
+La relación elegida es 1:M:
+
+```text
+Cuidador 1 -------- M Animal
+```
+
+Esto significa que un cuidador puede tener varios animales asignados. En la base de datos, esta relación se guarda mediante la clave foránea `cuidador_id` dentro de la tabla `animales`.
+
+## 4. Backend
+
+El backend está desarrollado con Java y Spring Boot. Se ha creado una API REST para comunicar el frontend con la base de datos.
+
+La aplicación usa una base de datos H2 en memoria, por lo que no hace falta instalar una base de datos externa. Cada vez que arrancamos el proyecto, se crean las tablas y se cargan algunos datos iniciales para poder probar la aplicación.
+
+La estructura del backend se divide en varias capas:
+
+- `model`: contiene las entidades JPA.
+- `repository`: contiene los repositorios que acceden a la base de datos.
+- `service`: contiene la lógica de negocio.
+- `controller`: expone los endpoints REST.
+- `dto`: contiene los objetos que se envían y reciben en la API.
+- `exception`: gestiona errores de forma más clara.
+
+## 5. Frontend
+
+El frontend está desarrollado con Angular 21. La aplicación utiliza componentes standalone, rutas básicas, formularios reactivos, servicios para llamar a la API REST y signals para manejar parte del estado.
+
+Las vistas principales son:
+
+- Inicio.
+- Listado de cuidadores.
+- Detalle de cuidador y animales asignados.
+- Formulario para crear cuidadores.
+- Formulario para crear animales.
+
+## 6. Operaciones implementadas
+
+La aplicación permite realizar las siguientes operaciones:
+
+- Listar cuidadores.
+- Ver el detalle de un cuidador.
+- Crear cuidadores.
+- Crear animales.
+- Consultar los animales asignados a un cuidador.
+- Listar animales.
+- Actualizar y eliminar registros desde la API.
+
+## 7. Conclusión
+
+Este proyecto cumple los requisitos mínimos pedidos porque incluye dos entidades relacionadas con una relación 1:M, una API REST funcional con Spring Boot, persistencia con una base de datos relacional H2 y un frontend en Angular que consume los datos mediante servicios. Además, se han añadido operaciones de edición y borrado en el backend para dejar el proyecto más completo.
+
+
+# Checklist de requisitos del proyecto
+
+## Modelo de datos mínimo
+
+| Requisito | Cómo se cumple |
+|---|---|
+| Al menos dos entidades | `Cuidador` y `Animal` |
+| Relación 1:M | Un `Cuidador` tiene muchos `Animal` |
+| Entidad principal | `Cuidador` |
+| Entidad hija | `Animal` |
+
+## Operaciones mínimas de la API
+
+| Requisito | Endpoint usado |
+|---|---|
+| Listar datos | `GET /api/cuidadores` y `GET /api/animales` |
+| Ver detalle de un elemento | `GET /api/cuidadores/{id}` y `GET /api/animales/{id}` |
+| Crear nuevos registros | `POST /api/cuidadores` y `POST /api/animales` |
+| Consultar relación entre principal e hija | `GET /api/cuidadores/{id}/animales` |
+| Edición y borrado opcional | `PUT` y `DELETE` en cuidadores y animales |
+
+## Requisitos obligatorios del backend
+
+| Requisito | Cómo se cumple |
+|---|---|
+| Java con Spring Boot | Proyecto Maven con Spring Boot |
+| API REST expuesta y funcional | Controladores `CuidadorController` y `AnimalController` |
+| Operaciones básicas sobre datos | Servicios, repositorios y endpoints CRUD |
+| Base de datos H2 en memoria | Configuración en `application.properties` |
+| Relación 1:M entre dos tablas | `@OneToMany` en `Cuidador` y `@ManyToOne` en `Animal` |
+| Persistencia relacional | Spring Data JPA + H2 |
+
+## Requisitos obligatorios del frontend
+
+| Requisito | Cómo se cumple |
+|---|---|
+| Angular 21 | Proyecto configurado en `package.json` |
+| Componentes standalone | Todos los componentes tienen `standalone: true` |
+| Signals | Servicio `ZooStoreService` usa `signal` y `computed` |
+| Formularios reactivos | Componentes `CuidadorFormComponent` y `AnimalFormComponent` |
+| Llamadas API REST desde servicios | `CuidadorApiService` y `AnimalApiService` |
+| Observables en servicios | Métodos HTTP devuelven `Observable<T>` |
+| Navegación con rutas | Archivo `app.routes.ts` |
+
+
+
+
+
 # BACKEND
 
 ## Ejecución del backend
