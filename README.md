@@ -46,7 +46,7 @@ mvn -v
 Desde la carpeta del backend:
 
 ```bash
-cd backend/zoologico-api
+cd backend/
 mvn spring-boot:run
 ```
 
@@ -115,7 +115,7 @@ Aqui va todo lo relacionado con el FrontEnd
 
 ## Comandos del frontend
 
-cd frontend/zoologico-front
+cd frontend/
 npm install
 npm start
 Abrir en el navegador: http://localhost:4200
