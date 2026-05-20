@@ -5,9 +5,9 @@ Grupo: "AI SpeedRunners"
 Este es el proyecto final de las prácticas de NTT DATA
 
 
-## BACKEND
+# BACKEND
 
-# Ejecución del backend
+## Ejecución del backend
 
 Este backend no necesita crear ninguna variable de entorno propia del proyecto.
 
@@ -27,7 +27,7 @@ spring.datasource.password=
 
 Por tanto, para la práctica no hace falta crear `.env`, `DATABASE_URL`, usuario de base de datos ni contraseña.
 
-## Requisitos del ordenador
+### Requisitos del ordenador
 
 Para abrir y ejecutar el backend sí hace falta tener instalado:
 
@@ -41,7 +41,7 @@ java -version
 mvn -v
 ```
 
-## Ejecutar el backend
+### Ejecutar el backend
 
 Desde la carpeta del backend:
 
@@ -70,7 +70,7 @@ User Name: sa
 Password: dejar vacío
 ```
 
-## Error típico con JAVA_HOME
+### Error típico con JAVA_HOME
 
 Si aparece un error parecido a:
 
@@ -99,7 +99,7 @@ File > Project Structure > Project SDK
 
 Seleccionando un JDK 17 o superior.
 
-## Error típico con Maven
+### Error típico con Maven
 
 Si aparece:
 
